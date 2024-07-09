@@ -7,18 +7,18 @@ class Meteorite:
 
     def years(self): 
         # Contains duplicates
-        years = []
+        self.yearsAll = []
 
         for i in self.data:
             if "year" not in i.keys():
                 print("year key missing for ID : {}".format(i["id"]))
                 continue
-            years.append(i["year"][:4])
+            self.yearsAll.append(i["year"][:4])
 
-        years.sort()
+        self.yearsAll.sort()
 
         # Non-duplicate unique years
-        yearSet = list(set(years))
+        yearSet = list(set(self.yearsAll))
         yearSet.sort()
         
         # Years divided in groups of 10 (except the last group)
@@ -28,12 +28,17 @@ class Meteorite:
             grouping.append((yearSet[i],yearSet[i+9]))
         grouping.append((yearSet[i+10],yearSet[-1]))
 
-        print(grouping[-1])
+    def meteors(self):
+        metCount = {}
+        print(self.years.yearsAll)
+        # for i in self.yearsAll:
+        #     metCount[i] = self.yearsAll.count(i)
+
 
 
 if __name__ == "__main__":
     meteors = Meteorite()
-    meteors.years()
+    meteors.meteors()
 
 
 
